@@ -21,7 +21,12 @@ docker exec ollama ollama pull qwen2.5:7b
 ### Option 2: Docker Desktop AI
 
 1. Update to latest Docker Desktop
-2. Enable **"Enable host-side TCP support"** under Settings → AI
+2. Enable **"Enable host-side TCP support"** under Settings → AI or by running:
+
+```bash
+docker desktop enable model-runner --tcp
+```
+
 3. Pull the model:
 
 ```bash
