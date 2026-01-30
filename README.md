@@ -18,13 +18,6 @@ docker-compose up -d
 docker exec ollama ollama pull qwen2.5:7b
 ```
 
-3. Install dependencies and run:
-
-```bash
-pnpm install
-pnpm dev
-```
-
 ### Option 2: Docker Desktop AI
 
 1. Update to latest Docker Desktop
@@ -36,12 +29,6 @@ docker model pull ai/qwen2.5:7B-Q4_0
 ```
 
 4. Update `.env` to use Docker llama.cpp config (uncomment Option 2)
-5. Install and run:
-
-```bash
-pnpm install
-pnpm dev
-```
 
 ## Configuration
 
@@ -60,23 +47,21 @@ Edit `.env` to change models or use a different Ollama instance.
 
 Quantization reduces memory usage by using fewer bits per parameter:
 
-| Quantization | Quality | Memory (7B model) | Use Case |
-|--------------|---------|-------------------|----------|
-| **Q4_0** | Good | ~4 GB RAM | Best balance, recommended for most users |
-| **Q5_0** | Better | ~5 GB RAM | Slightly better quality |
-| **Q8_0** | Excellent | ~8 GB RAM | High quality, more RAM needed |
-| **F16/F32** | Best | ~14-28 GB RAM | Full precision, only if you have lots of RAM |
+| Quantization | Quality   | Memory (7B model) | Use Case                                     |
+| ------------ | --------- | ----------------- | -------------------------------------------- |
+| **Q4_0**     | Good      | ~4 GB RAM         | Best balance, recommended for most users     |
+| **Q5_0**     | Better    | ~5 GB RAM         | Slightly better quality                      |
+| **Q8_0**     | Excellent | ~8 GB RAM         | High quality, more RAM needed                |
+| **F16/F32**  | Best      | ~14-28 GB RAM     | Full precision, only if you have lots of RAM |
 
 ### Model Sizes
 
-| Size | Parameters | Memory (Q4_0) | Speed | Quality |
-|------|------------|---------------|-------|---------|
-| **1.5B** | 1.5 billion | ~1 GB | Fast | Basic |
-| **7B** | 7 billion | ~4 GB | Good | Recommended |
-| **13B** | 13 billion | ~8 GB | Slower | Better |
-| **70B** | 70 billion | ~40 GB | Slow | Best |
-
-**Recommendation:** Start with **qwen2.5:7b** (Q4_0) if you have 8GB+ RAM.
+| Size     | Parameters  | Memory (Q4_0) | Speed  | Quality     |
+| -------- | ----------- | ------------- | ------ | ----------- |
+| **1.5B** | 1.5 billion | ~1 GB         | Fast   | Basic       |
+| **7B**   | 7 billion   | ~4 GB         | Good   | Recommended |
+| **13B**  | 13 billion  | ~8 GB         | Slower | Better      |
+| **70B**  | 70 billion  | ~40 GB        | Slow   | Best        |
 
 ## Docker Desktop AI vs Ollama
 
