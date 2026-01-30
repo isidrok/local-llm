@@ -4,7 +4,34 @@ LangChain agent running with local LLM.
 
 ## Setup
 
-### Option 1: Docker Compose (Ollama)
+> **Note for Mac Users:** Docker on Mac does not support GPU acceleration. For better performance, use Option 1 (Native Ollama) instead of Docker.
+
+### Option 1: Native Ollama (Recommended for Mac)
+
+Run Ollama directly on your system for GPU support:
+
+1. Install Ollama:
+
+```bash
+# macOS
+brew install ollama
+
+# Or download from https://ollama.ai
+```
+
+2. Start Ollama service:
+
+```bash
+ollama serve
+```
+
+3. Pull the model:
+
+```bash
+ollama pull qwen2.5:7b
+```
+
+### Option 2: Docker Compose (Ollama)
 
 1. Start Ollama:
 
@@ -18,7 +45,7 @@ docker-compose up -d
 docker exec ollama ollama pull qwen2.5:7b
 ```
 
-### Option 2: Docker Desktop AI
+### Option 3: Docker Desktop AI
 
 1. Update to latest Docker Desktop
 2. Enable **"Enable host-side TCP support"** under Settings → AI or by running:
@@ -33,7 +60,7 @@ docker desktop enable model-runner --tcp
 docker model pull ai/qwen2.5:7B-Q4_0
 ```
 
-4. Update `.env` to use Docker llama.cpp config (uncomment Option 2)
+4. Update `.env` to use Docker llama.cpp config (uncomment Option 3)
 
 ## Configuration
 
@@ -74,4 +101,4 @@ Both use **llama.cpp** for inference and provide **OpenAI-compatible endpoints**
 
 **Docker Desktop AI:** `http://localhost:12434/engines/llama.cpp/v1` - llama.cpp server directly, models as GGUF on Docker Hub
 
-**Ollama:** `http://localhost:11435/v1` - llama.cpp with custom model management layer
+**Ollama:** `http://localhost:11434/v1` - llama.cpp with custom model management layer
