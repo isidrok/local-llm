@@ -1,3 +1,4 @@
+import "dotenv/config";
 import * as z from "zod";
 import { createAgent, tool } from "langchain";
 import { ChatOpenAI } from "@langchain/openai";
@@ -29,3 +30,24 @@ export const agent = createAgent({
   model,
   tools: [getWeather],
 });
+
+async function main() {
+  const stream = await agent.stream(
+    {
+      messages: [
+        {
+          role: "user",
+          content:
+            "what is the weather in the capital of the country whose name rhymes with pain",
+        },
+      ],
+    },
+    { streamMode: "updates" },
+  );
+
+  for await (const chunk of stream) {
+    console.log(JSON.stringify(chunk, null, 2));
+  }
+}
+
+main();

@@ -2,12 +2,10 @@
   "name": "local-llm",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "dev": "tsx src/index.ts"
+    "dev": "tsc --watch"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -19,10 +17,10 @@
   },
   "dependencies": {
     "@langchain/openai": "^1.2.4",
-    "@types/express": "^5.0.6",
+    "@openai/agents": "^0.4.4",
     "dotenv": "^17.2.3",
-    "express": "^5.2.1",
     "langchain": "^1.2.16",
+    "openai": "^6.17.0",
     "zod": "^4.3.6"
   }
 }
