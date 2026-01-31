@@ -4,9 +4,9 @@ LangChain agent running with local LLM.
 
 ## Setup
 
-> **Note for Mac Users:** Docker on Mac does not support GPU acceleration. For better performance, use Option 1 (Native Ollama) instead of Docker.
+> **Note for Mac:** Docker on Mac does not support GPU acceleration. For better performance, use native Ollama instead of Docker.
 
-### Option 1: Native Ollama (Recommended for Mac)
+### Option 1: Native Ollama (Recommended)
 
 Run Ollama directly on your system for GPU support:
 
@@ -68,13 +68,15 @@ Edit `.env` to change models or use a different Ollama instance.
 
 ## Docker Desktop AI vs Ollama
 
-Both use **llama.cpp** for inference and provide **OpenAI-compatible endpoints** (so you can use ChatOpenAI with both):
+Both use **llama.cpp** for inference and provide **OpenAI-compatible endpoints**:
 
 **Docker Desktop AI:** `http://localhost:12434/engines/llama.cpp/v1` - llama.cpp server directly, models as GGUF on Docker Hub
 
 **Ollama:** `http://localhost:11434/v1` - llama.cpp with custom model management layer
 
 ## Bonus: use with Claude Code
+
+### Option 1: Native Ollama
 
 The following steps show how to connect Claude Code to an Ollama‑hosted model:
 
@@ -97,4 +99,24 @@ The following steps show how to connect Claude Code to an Ollama‑hosted model:
 
    ```bash
    ollama launch claude
+   ```
+
+### Option 2: Docker desktop AI
+
+1. **Pull the model**:
+
+   ```bash
+   docker model pull gpt-oss
+   ```
+
+2. **Change the context size**:
+
+   ```bash
+   docker model package --from ai/gpt-oss --context-size 64000 gpt-oss:64k
+   ```
+
+3. **Launch claude code with tne new model**:
+
+   ```bash
+   ANTHROPIC_BASE_URL=http://localhost:12434 claude --model gpt-oss:64k
    ```

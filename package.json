@@ -18,8 +18,11 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@langchain/openai": "^1.2.4",
+    "@types/express": "^5.0.6",
     "dotenv": "^17.2.3",
-    "langchain": "^1.2.15",
+    "express": "^5.2.1",
+    "langchain": "^1.2.16",
     "zod": "^4.3.6"
   }
 }
